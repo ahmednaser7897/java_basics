@@ -2,10 +2,10 @@ package Basics;
 import java.util.Scanner;
 public class Loops {
     public static void main(String[] args) {
-        //whileLoop();
-        forLoop();
+        // whileLoop();
+       // forLoop();
         //doWhileLoop();
-        nestedLoop();
+       // nestedLoop();
         breakAndContinue();
     }
     public static void whileLoop(){
@@ -72,9 +72,26 @@ public class Loops {
             System.out.println("Correct answer");
     }
     public static void nestedLoop(){
-
+        System.out.println("Nested Loop");
+        for (int i = 1; i <= 9; i++) {
+            System.out.print("\t"+i);
+        }
+        System.out.println("\n-------------------------------------------");
+        for (int i = 1; i <= 9; i++) {
+            System.out.print((i)+" |"+"\t");
+            for (int j = 1; j <=9; j++) {
+                System.out.print(((i)*(j))+"\t");
+            }
+            System.out.println();
+        }
     }
     public static void breakAndContinue(){
-
+       for(int i=0;i<10;i++){
+           if(i==4)
+               continue;
+           else if(i==8)
+               break;
+           System.out.println("i is "+i);
+       }
     }
 }
