@@ -1,6 +1,4 @@
-package Basics;
-
-import java.util.Arrays;
+package basics;
 
 public class MultidimensionalArrays {
     public static void main(String[] args) {

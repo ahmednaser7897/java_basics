@@ -1,4 +1,4 @@
-package Basics;
+package basics;
 //Implicit Import when we call all class in a package
 //import java.util.*;
 //Explicit Import when we call a specific class in a package
