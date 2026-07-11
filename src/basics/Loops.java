@@ -1,6 +1,6 @@
 package basics;
 import java.util.Scanner;
-public class Loops {
+ class Loops {
     public static void main(String[] args) {
         // whileLoop();
        // forLoop();
@@ -85,7 +85,7 @@ public class Loops {
             System.out.println();
         }
     }
-    public static void breakAndContinue(){
+    static void breakAndContinue(){
        for(int i=0;i<10;i++){
            if(i==4)
                continue;
