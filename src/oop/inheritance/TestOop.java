@@ -1,4 +1,4 @@
-package oop;
+package oop.inheritance;
 
 class TestOop {
     //default Visibility Modifier
