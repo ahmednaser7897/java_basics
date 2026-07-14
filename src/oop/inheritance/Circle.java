@@ -2,15 +2,15 @@ package oop.inheritance;
 
 
 //subclasses
-class Circle extends Geometric{
+public class Circle extends Geometric{
     private double radius;
     // By defau this will add radius = 0.0; in constructor
     // and will add default super(); at the begining of the constructor
-    Circle(){
+    public Circle(){
         // This calls the constructor of the same class -> this(arguments);
         this(1.0);
     }
-    Circle(double radius){
+    public Circle(double radius){
         // This calls the constructor of the parent class -> super(arguments);
         // we do not need to call super() if we are calling the default constructor
         // because it will be called by default
@@ -35,6 +35,7 @@ class Circle extends Geometric{
         else
             this.radius = 0;
     }
+    @Override
     public double getArea() {return Math.PI * radius * radius;}
     public double getPerimeter() {return 2 * Math.PI * radius;}
     public double getDiameter() {return 2 * radius;}

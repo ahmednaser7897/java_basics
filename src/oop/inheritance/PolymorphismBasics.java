@@ -17,8 +17,6 @@ public class PolymorphismBasics {
         //GeometricObject and GeometricObject is a
         //supertype for Circle.
         //so we can use Geometric object to refer to a Circle object
-        Geometric object1=new Geometric();
-        displayOpject(object1);
         Geometric object2 = new Circle(10.0, "Red", true);
         displayOpject(object2);
     }

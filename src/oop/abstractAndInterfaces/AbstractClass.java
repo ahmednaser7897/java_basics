@@ -36,7 +36,7 @@ abstract class  Geometric{
     public String toString() {return "Geometric [color=" + color + "]";}
 
 }
-class Circle extends Geometric {
+ class Circle extends Geometric {
     private double radius;
     Circle(){
         this(1.0);

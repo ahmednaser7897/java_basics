@@ -1,15 +1,15 @@
 package oop.inheritance;
 
 ////subclasses
-class Rectangle extends Geometric {
+public class Rectangle extends Geometric {
     private  double width;
     private double height;
     //By default this will add width = 0.0; and height = 0.0;
     //and will add default super(); at the begining of the constructor
-    Rectangle(){
+    public Rectangle(){
         this(1.0,1.0);
     }
-    Rectangle(double width, double height){
+    public Rectangle(double width, double height){
         // This calls the constructor of the parent class -> super(arguments);
         // we do not need to call super() if we are calling the default constructor
         // because it will be called by default
@@ -48,6 +48,7 @@ class Rectangle extends Geometric {
     public double getHeight() {
         return height;
     }
+    @Override
     public double getArea() {
         return width * height;
     }

@@ -3,15 +3,15 @@ package oop.inheritance;
 import java.util.Date;
 
 //Superclasses
-class Geometric{
+public  abstract class Geometric{
     private  String color;
     private boolean filled;
     private final Date dateCreated;
-    Geometric(){
+    public Geometric(){
         // This calls the constructor of the same class -> this(arguments);
         this("White",false);
     }
-    Geometric(  String color,
+    public Geometric(  String color,
                 boolean filled
     ){
         this.color = color;
@@ -34,4 +34,5 @@ class Geometric{
     public void testOverridingAndOverloading(int number){
         System.out.println("Geometric Test Overriding And Overloading method " + number);
     }
+    public abstract double getArea();
 }
