@@ -42,8 +42,8 @@ public class CollectionBasics {
 
         System.out.println("\nA list of cities in collection2:");
         System.out.println(collection2);
-
-        ArrayList<String> c1 = (ArrayList<String>)(collection1.clone());
+        ArrayList<String> c1 = new ArrayList<>(collection1);
+        //ArrayList<String> c1 = (ArrayList<String>)(collection1.clone());
         c1.addAll(collection2);
         System.out.println("\nCities in collection1 or collection2: ");
         System.out.println(c1);
