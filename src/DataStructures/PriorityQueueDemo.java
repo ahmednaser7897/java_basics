@@ -1,4 +1,4 @@
-package DataStructures.CollectionsClasses;
+package DataStructures;
 
 import java.util.Collections;
 import java.util.PriorityQueue;

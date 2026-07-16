@@ -1,6 +1,5 @@
 
-package DataStructures.data_structures.stack;
-import DataStructures.data_structures.interfaces.MainList;
+package DataStructures.data_structures;
 
 import java.util.ArrayList;
 

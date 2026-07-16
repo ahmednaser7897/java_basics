@@ -1,4 +1,4 @@
-package DataStructures.data_structures.interfaces;
+package DataStructures.data_structures;
 
 public interface MainList<T> {
 

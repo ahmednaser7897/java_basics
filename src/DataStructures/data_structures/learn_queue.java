@@ -1,6 +1,5 @@
 
-package DataStructures.data_structures.queue;
-import DataStructures.data_structures.interfaces.MainList;
+package DataStructures.data_structures;
 import java.util.ArrayList;
 
 public class learn_queue {

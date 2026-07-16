@@ -1,10 +1,9 @@
-package DataStructures.CollectionsClasses;
+package DataStructures;
 
 import oop.inheritance.Circle;
 import oop.inheritance.Geometric;
 import oop.inheritance.Rectangle;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
