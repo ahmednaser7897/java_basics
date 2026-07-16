@@ -7,7 +7,7 @@ public class TestMap {
        testHashMap();
        testLinkedHashMap();
        testTreeMap();
-       testTreeMap();
+       countOccurrenceOfWords();
 
     }
     public static void testHashMap(){
@@ -80,6 +80,5 @@ public class TestMap {
         }
         // Display key and value for each entry
         map.forEach((k, v) -> System.out.println(k + "\t" + v));
-
     }
 }
