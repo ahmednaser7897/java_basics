@@ -21,6 +21,7 @@ requires modifying the OldPaymentProcessor class.
 ===============================================================================
 */
 package solid;
+
 public class OCP_Before {
 
     public static void main(String[] args) {
@@ -37,28 +38,31 @@ public class OCP_Before {
 }
 
 /*
-===============================================================================
-                        PAYMENT PROCESSOR
-===============================================================================
-
-Problem
--------
-Every payment type is handled using if-else.
-
-Whenever a new payment method is added:
-
-Apple Pay
-Google Pay
-Visa
-MasterCard
-Crypto
-
-We must come back and edit this class.
-
-This violates OCP because existing code is constantly modified.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * PAYMENT PROCESSOR
+ * =============================================================================
+ * ==
+ * 
+ * Problem
+ * -------
+ * Every payment type is handled using if-else.
+ * 
+ * Whenever a new payment method is added:
+ * 
+ * Apple Pay
+ * Google Pay
+ * Visa
+ * MasterCard
+ * Crypto
+ * 
+ * We must come back and edit this class.
+ * 
+ * This violates OCP because existing code is constantly modified.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class OldPaymentProcessor {
 
@@ -90,51 +94,55 @@ class OldPaymentProcessor {
 }
 
 /*
-===============================================================================
-                               WHY BAD?
-===============================================================================
-
-Imagine the company adds:
-
-✔ Apple Pay
-
-What should we do?
-
-Go back to PaymentProcessor
-↓
-Add another else-if
-
-Tomorrow:
-
-Google Pay
-↓
-Modify again
-
-Next month:
-
-Crypto
-↓
-Modify again
-
-The class keeps changing forever.
-
-Large if-else blocks become difficult to:
-
-✔ Read
-✔ Test
-✔ Maintain
-
-===============================================================================
-
-Interview Question
-
-Q:
-Why does this code violate OCP?
-
-Answer:
-
-Because every new payment method requires modifying
-the PaymentProcessor class instead of extending it.
-
-===============================================================================
+ * =============================================================================
+ * ==
+ * WHY BAD?
+ * =============================================================================
+ * ==
+ * 
+ * Imagine the company adds:
+ * 
+ * ✔ Apple Pay
+ * 
+ * What should we do?
+ * 
+ * Go back to PaymentProcessor
+ * ↓
+ * Add another else-if
+ * 
+ * Tomorrow:
+ * 
+ * Google Pay
+ * ↓
+ * Modify again
+ * 
+ * Next month:
+ * 
+ * Crypto
+ * ↓
+ * Modify again
+ * 
+ * The class keeps changing forever.
+ * 
+ * Large if-else blocks become difficult to:
+ * 
+ * ✔ Read
+ * ✔ Test
+ * ✔ Maintain
+ * 
+ * =============================================================================
+ * ==
+ * 
+ * Interview Question
+ * 
+ * Q:
+ * Why does this code violate OCP?
+ * 
+ * Answer:
+ * 
+ * Because every new payment method requires modifying
+ * the PaymentProcessor class instead of extending it.
+ * 
+ * =============================================================================
+ * ==
  */

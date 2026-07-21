@@ -34,13 +34,14 @@ Benefits
 ===============================================================================
 */
 package solid;
+
 public class LSP_After {
 
     public static void main(String[] args) {
 
         FlyingBird sparrow = new Sparrow();
 
-       Bird penguin = new Penguin();
+        Bird penguin = new Penguin();
 
         makeBirdFly(sparrow);
 
@@ -49,10 +50,10 @@ public class LSP_After {
     }
 
     /*
-    This method accepts ONLY birds that can fly.
-
-    We no longer assume every Bird can fly.
-    */
+     * This method accepts ONLY birds that can fly.
+     * 
+     * We no longer assume every Bird can fly.
+     */
 
     static void makeBirdFly(FlyingBird bird) {
 
@@ -65,22 +66,25 @@ public class LSP_After {
 }
 
 /*
-===============================================================================
-                                  BIRD
-===============================================================================
-
-Responsibility
---------------
-Contains behavior shared by ALL birds.
-
-Every bird can eat.
-
-But NOT every bird can fly.
-
-Notice that fly() no longer exists here.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * BIRD
+ * =============================================================================
+ * ==
+ * 
+ * Responsibility
+ * --------------
+ * Contains behavior shared by ALL birds.
+ * 
+ * Every bird can eat.
+ * 
+ * But NOT every bird can fly.
+ * 
+ * Notice that fly() no longer exists here.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class Bird {
 
@@ -93,19 +97,22 @@ class Bird {
 }
 
 /*
-===============================================================================
-                             FLYING BIRD
-===============================================================================
-
-Responsibility
---------------
-Represents only birds that are capable of flying.
-
-Any class extending FlyingBird
-must be able to fly.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * FLYING BIRD
+ * =============================================================================
+ * ==
+ * 
+ * Responsibility
+ * --------------
+ * Represents only birds that are capable of flying.
+ * 
+ * Any class extending FlyingBird
+ * must be able to fly.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class FlyingBird extends Bird {
 
@@ -118,18 +125,21 @@ class FlyingBird extends Bird {
 }
 
 /*
-===============================================================================
-                                SPARROW
-===============================================================================
-
-A Sparrow can fly.
-
-So it extends FlyingBird.
-
-This is a valid substitution.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * SPARROW
+ * =============================================================================
+ * ==
+ * 
+ * A Sparrow can fly.
+ * 
+ * So it extends FlyingBird.
+ * 
+ * This is a valid substitution.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class Sparrow extends FlyingBird {
 
@@ -143,24 +153,27 @@ class Sparrow extends FlyingBird {
 }
 
 /*
-===============================================================================
-                                PENGUIN
-===============================================================================
-
-A Penguin cannot fly.
-
-So it extends Bird directly.
-
-No need to override fly().
-
-No fake implementation.
-
-No exceptions.
-
-This is the correct design.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * PENGUIN
+ * =============================================================================
+ * ==
+ * 
+ * A Penguin cannot fly.
+ * 
+ * So it extends Bird directly.
+ * 
+ * No need to override fly().
+ * 
+ * No fake implementation.
+ * 
+ * No exceptions.
+ * 
+ * This is the correct design.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class Penguin extends Bird {
 
@@ -174,89 +187,95 @@ class Penguin extends Bird {
 }
 
 /*
-===============================================================================
-                          WHY IS THIS BETTER?
-===============================================================================
-
-Old Design
-
-Bird
- ├── Sparrow ✔
- └── Penguin ❌
-
-Problem:
-
-Bird promised that every bird can fly.
-
-Penguin broke that promise.
-
--------------------------------------------------------------------------------
-
-New Design
-
-Bird
- ├── FlyingBird
- │      └── Sparrow
- │
- └── Penguin
-
-Now:
-
-✔ Sparrow can replace FlyingBird.
-
-✔ Penguin can replace Bird.
-
-No broken behavior.
-
-No runtime exceptions.
-
-===============================================================================
-
-Real Life Example
-
-Vehicle
-    |
-    |---- Car
-    |
-    |---- Bicycle
-
-Imagine Vehicle has:
-
-startEngine()
-
-Bicycle doesn't have an engine.
-
-Wrong design.
-
-Better:
-
-Vehicle
-
-MotorVehicle extends Vehicle
-
-Car extends MotorVehicle
-
-Bike extends Vehicle
-
-Same idea as Bird/FlyingBird.
-
-===============================================================================
-
-Interview Question
-
-Q:
-Why is this design following LSP?
-
-Answer:
-
-Because every subclass fulfills the behavior
-promised by its parent.
-
-FlyingBird objects can always fly.
-
-Bird objects are not forced to fly.
-
-No subclass breaks the parent's contract.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * WHY IS THIS BETTER?
+ * =============================================================================
+ * ==
+ * 
+ * Old Design
+ * 
+ * Bird
+ * ├── Sparrow ✔
+ * └── Penguin ❌
+ * 
+ * Problem:
+ * 
+ * Bird promised that every bird can fly.
+ * 
+ * Penguin broke that promise.
+ * 
+ * -----------------------------------------------------------------------------
+ * --
+ * 
+ * New Design
+ * 
+ * Bird
+ * ├── FlyingBird
+ * │ └── Sparrow
+ * │
+ * └── Penguin
+ * 
+ * Now:
+ * 
+ * ✔ Sparrow can replace FlyingBird.
+ * 
+ * ✔ Penguin can replace Bird.
+ * 
+ * No broken behavior.
+ * 
+ * No runtime exceptions.
+ * 
+ * =============================================================================
+ * ==
+ * 
+ * Real Life Example
+ * 
+ * Vehicle
+ * |
+ * |---- Car
+ * |
+ * |---- Bicycle
+ * 
+ * Imagine Vehicle has:
+ * 
+ * startEngine()
+ * 
+ * Bicycle doesn't have an engine.
+ * 
+ * Wrong design.
+ * 
+ * Better:
+ * 
+ * Vehicle
+ * 
+ * MotorVehicle extends Vehicle
+ * 
+ * Car extends MotorVehicle
+ * 
+ * Bike extends Vehicle
+ * 
+ * Same idea as Bird/FlyingBird.
+ * 
+ * =============================================================================
+ * ==
+ * 
+ * Interview Question
+ * 
+ * Q:
+ * Why is this design following LSP?
+ * 
+ * Answer:
+ * 
+ * Because every subclass fulfills the behavior
+ * promised by its parent.
+ * 
+ * FlyingBird objects can always fly.
+ * 
+ * Bird objects are not forced to fly.
+ * 
+ * No subclass breaks the parent's contract.
+ * 
+ * =============================================================================
+ * ==
+ */

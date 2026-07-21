@@ -98,7 +98,7 @@ public class SRP_Before {
 
     public static void main(String[] args) {
 
-        User user = new User(
+        OldUser user = new OldUser(
                 "Ahmed",
                 "ahmed@gmail.com");
 
@@ -139,7 +139,7 @@ public class SRP_Before {
  * ===
  */
 
-class User {
+class OldUser {
 
     /*
      * --------------------------------------------------------------------------
@@ -155,7 +155,7 @@ class User {
     private String name;
     private String email;
 
-    public User(String name, String email) {
+    public OldUser(String name, String email) {
 
         this.name = name;
         this.email = email;

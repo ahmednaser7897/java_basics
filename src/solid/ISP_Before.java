@@ -23,6 +23,7 @@ This violates ISP.
 ===============================================================================
 */
 package solid;
+
 public class ISP_Before {
 
     public static void main(String[] args) {
@@ -49,26 +50,29 @@ public class ISP_Before {
 }
 
 /*
-===============================================================================
-                            WORKER INTERFACE
-===============================================================================
-
-Problem
--------
-This interface contains responsibilities
-for every possible worker.
-
-But not every worker:
-
-✔ Eats
-✔ Sleeps
-
-Robot workers don't.
-
-Still, they are forced to implement them.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * WORKER INTERFACE
+ * =============================================================================
+ * ==
+ * 
+ * Problem
+ * -------
+ * This interface contains responsibilities
+ * for every possible worker.
+ * 
+ * But not every worker:
+ * 
+ * ✔ Eats
+ * ✔ Sleeps
+ * 
+ * Robot workers don't.
+ * 
+ * Still, they are forced to implement them.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 interface Worker {
 
@@ -81,16 +85,19 @@ interface Worker {
 }
 
 /*
-===============================================================================
-                            HUMAN WORKER
-===============================================================================
-
-A human worker performs all operations.
-
-No problem here.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * HUMAN WORKER
+ * =============================================================================
+ * ==
+ * 
+ * A human worker performs all operations.
+ * 
+ * No problem here.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class OldHumanWorker implements Worker {
 
@@ -118,31 +125,34 @@ class OldHumanWorker implements Worker {
 }
 
 /*
-===============================================================================
-                            ROBOT WORKER
-===============================================================================
-
-Problem
--------
-A robot can work.
-
-But it cannot:
-
-- Eat
-- Sleep
-
-However, because of the large interface,
-it MUST implement these methods.
-
-Most developers either:
-
-- Leave them empty.
-- Throw exceptions.
-
-Both are signs of bad design.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * ROBOT WORKER
+ * =============================================================================
+ * ==
+ * 
+ * Problem
+ * -------
+ * A robot can work.
+ * 
+ * But it cannot:
+ * 
+ * - Eat
+ * - Sleep
+ * 
+ * However, because of the large interface,
+ * it MUST implement these methods.
+ * 
+ * Most developers either:
+ * 
+ * - Leave them empty.
+ * - Throw exceptions.
+ * 
+ * Both are signs of bad design.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class OldRobotWorker implements Worker {
 
@@ -157,8 +167,7 @@ class OldRobotWorker implements Worker {
     public void eat() {
 
         throw new UnsupportedOperationException(
-                "Robot does not eat."
-        );
+                "Robot does not eat.");
 
     }
 
@@ -166,53 +175,56 @@ class OldRobotWorker implements Worker {
     public void sleep() {
 
         throw new UnsupportedOperationException(
-                "Robot does not sleep."
-        );
+                "Robot does not sleep.");
 
     }
 
 }
 
 /*
-===============================================================================
-                              WHY BAD?
-===============================================================================
-
-Worker Interface
-
-├── work()
-├── eat()
-└── sleep()
-
-Human
-✔ Works
-✔ Eats
-✔ Sleeps
-
-Robot
-✔ Works
-❌ Eats
-❌ Sleeps
-
-Robot is forced to implement methods
-it never uses.
-
-This is exactly what ISP tries to prevent.
-
-===============================================================================
-
-Interview Question
-
-Q:
-Why does this design violate ISP?
-
-Answer:
-
-Because RobotWorker depends on methods
-that are meaningless for it.
-
-Large interfaces should be divided into
-smaller, focused interfaces.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * WHY BAD?
+ * =============================================================================
+ * ==
+ * 
+ * Worker Interface
+ * 
+ * ├── work()
+ * ├── eat()
+ * └── sleep()
+ * 
+ * Human
+ * ✔ Works
+ * ✔ Eats
+ * ✔ Sleeps
+ * 
+ * Robot
+ * ✔ Works
+ * ❌ Eats
+ * ❌ Sleeps
+ * 
+ * Robot is forced to implement methods
+ * it never uses.
+ * 
+ * This is exactly what ISP tries to prevent.
+ * 
+ * =============================================================================
+ * ==
+ * 
+ * Interview Question
+ * 
+ * Q:
+ * Why does this design violate ISP?
+ * 
+ * Answer:
+ * 
+ * Because RobotWorker depends on methods
+ * that are meaningless for it.
+ * 
+ * Large interfaces should be divided into
+ * smaller, focused interfaces.
+ * 
+ * =============================================================================
+ * ==
+ */

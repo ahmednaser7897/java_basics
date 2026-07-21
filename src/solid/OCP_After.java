@@ -32,6 +32,7 @@ Benefits
 ===============================================================================
 */
 package solid;
+
 public class OCP_After {
 
     public static void main(String[] args) {
@@ -55,30 +56,33 @@ public class OCP_After {
 }
 
 /*
-===============================================================================
-                         PAYMENT INTERFACE
-===============================================================================
-
-Responsibility
---------------
-This interface defines a common contract.
-
-Every payment method MUST implement pay().
-
-The PaymentProcessor only works with this interface.
-
-It doesn't care if the payment is:
-
-- Credit Card
-- PayPal
-- Cash
-- Apple Pay
-- Crypto
-
-This makes the system flexible.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * PAYMENT INTERFACE
+ * =============================================================================
+ * ==
+ * 
+ * Responsibility
+ * --------------
+ * This interface defines a common contract.
+ * 
+ * Every payment method MUST implement pay().
+ * 
+ * The PaymentProcessor only works with this interface.
+ * 
+ * It doesn't care if the payment is:
+ * 
+ * - Credit Card
+ * - PayPal
+ * - Cash
+ * - Apple Pay
+ * - Crypto
+ * 
+ * This makes the system flexible.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 interface PaymentMethod {
 
@@ -87,19 +91,22 @@ interface PaymentMethod {
 }
 
 /*
-===============================================================================
-                      CREDIT CARD PAYMENT
-===============================================================================
-
-Responsibility
---------------
-Handle Credit Card payment only.
-
-If Credit Card logic changes,
-ONLY this class changes.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * CREDIT CARD PAYMENT
+ * =============================================================================
+ * ==
+ * 
+ * Responsibility
+ * --------------
+ * Handle Credit Card payment only.
+ * 
+ * If Credit Card logic changes,
+ * ONLY this class changes.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class CreditCardPayment implements PaymentMethod {
 
@@ -115,16 +122,19 @@ class CreditCardPayment implements PaymentMethod {
 }
 
 /*
-===============================================================================
-                          PAYPAL PAYMENT
-===============================================================================
-
-Responsibility
---------------
-Handle PayPal payment only.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * PAYPAL PAYMENT
+ * =============================================================================
+ * ==
+ * 
+ * Responsibility
+ * --------------
+ * Handle PayPal payment only.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class PayPalPayment implements PaymentMethod {
 
@@ -140,16 +150,19 @@ class PayPalPayment implements PaymentMethod {
 }
 
 /*
-===============================================================================
-                           CASH PAYMENT
-===============================================================================
-
-Responsibility
---------------
-Handle Cash payment only.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * CASH PAYMENT
+ * =============================================================================
+ * ==
+ * 
+ * Responsibility
+ * --------------
+ * Handle Cash payment only.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class CashPayment implements PaymentMethod {
 
@@ -165,33 +178,36 @@ class CashPayment implements PaymentMethod {
 }
 
 /*
-===============================================================================
-                       PAYMENT PROCESSOR
-===============================================================================
+ * =============================================================================
+ * ==
+ * PAYMENT PROCESSOR
+ * =============================================================================
+ * ==
+ * 
+ * Responsibility
+ * --------------
+ * Execute any payment method.
+ * 
+ * Notice:
+ * 
+ * There is
+ * 
+ * ✔ No if
+ * ✔ No else
+ * ✔ No switch
+ * 
+ * The processor simply asks the object to pay().
+ * 
+ * This is called POLYMORPHISM.
+ * 
+ * No matter what object is passed,
+ * the correct pay() method is executed.
+ * 
+ * =============================================================================
+ * ==
+ */
 
-Responsibility
---------------
-Execute any payment method.
-
-Notice:
-
-There is
-
-✔ No if
-✔ No else
-✔ No switch
-
-The processor simply asks the object to pay().
-
-This is called POLYMORPHISM.
-
-No matter what object is passed,
-the correct pay() method is executed.
-
-===============================================================================
-*/
-
- class PaymentProcessor {
+class PaymentProcessor {
 
     public void processPayment(PaymentMethod paymentMethod) {
 
@@ -206,91 +222,98 @@ the correct pay() method is executed.
 }
 
 /*
-===============================================================================
-                     HOW TO ADD A NEW PAYMENT?
-===============================================================================
-
-Imagine the company wants to support Apple Pay.
-
-Do we modify PaymentProcessor?
-
-❌ NO
-
-Do we modify CreditCardPayment?
-
-❌ NO
-
-Do we modify the interface?
-
-❌ NO
-
-We ONLY create a new class:
-
--------------------------------------------------
-
-class ApplePayPayment implements PaymentMethod {
-
-    @Override
-    public void pay() {
-
-        System.out.println("Processing Apple Pay...");
-
-    }
-
-}
-
--------------------------------------------------
-
-Now we can use it directly:
-
-PaymentMethod apple = new ApplePayPayment();
-
-processor.processPayment(apple);
-
-No existing code changed.
-
-This is exactly what OCP means.
-
-===============================================================================
-                               SUMMARY
-===============================================================================
-
-Before
-------
-
-PaymentProcessor
-
-❌ if
-❌ else-if
-❌ else
-❌ Modify every new payment
-
--------------------------------------------------------------------------------
-
-After
------
-
-PaymentProcessor
-
-✔ No conditions
-✔ No modifications
-✔ Uses abstraction
-✔ Easy to extend
-
--------------------------------------------------------------------------------
-
-Interview Question
-
-Q: Why does this code follow OCP?
-
-Answer:
-
-Because adding a new payment method does not require modifying
-existing classes.
-
-We simply create another class that implements PaymentMethod.
-
-Existing code remains unchanged.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * HOW TO ADD A NEW PAYMENT?
+ * =============================================================================
+ * ==
+ * 
+ * Imagine the company wants to support Apple Pay.
+ * 
+ * Do we modify PaymentProcessor?
+ * 
+ * ❌ NO
+ * 
+ * Do we modify CreditCardPayment?
+ * 
+ * ❌ NO
+ * 
+ * Do we modify the interface?
+ * 
+ * ❌ NO
+ * 
+ * We ONLY create a new class:
+ * 
+ * -------------------------------------------------
+ * 
+ * class ApplePayPayment implements PaymentMethod {
+ * 
+ * @Override
+ * public void pay() {
+ * 
+ * System.out.println("Processing Apple Pay...");
+ * 
+ * }
+ * 
+ * }
+ * 
+ * -------------------------------------------------
+ * 
+ * Now we can use it directly:
+ * 
+ * PaymentMethod apple = new ApplePayPayment();
+ * 
+ * processor.processPayment(apple);
+ * 
+ * No existing code changed.
+ * 
+ * This is exactly what OCP means.
+ * 
+ * =============================================================================
+ * ==
+ * SUMMARY
+ * =============================================================================
+ * ==
+ * 
+ * Before
+ * ------
+ * 
+ * PaymentProcessor
+ * 
+ * ❌ if
+ * ❌ else-if
+ * ❌ else
+ * ❌ Modify every new payment
+ * 
+ * -----------------------------------------------------------------------------
+ * --
+ * 
+ * After
+ * -----
+ * 
+ * PaymentProcessor
+ * 
+ * ✔ No conditions
+ * ✔ No modifications
+ * ✔ Uses abstraction
+ * ✔ Easy to extend
+ * 
+ * -----------------------------------------------------------------------------
+ * --
+ * 
+ * Interview Question
+ * 
+ * Q: Why does this code follow OCP?
+ * 
+ * Answer:
+ * 
+ * Because adding a new payment method does not require modifying
+ * existing classes.
+ * 
+ * We simply create another class that implements PaymentMethod.
+ * 
+ * Existing code remains unchanged.
+ * 
+ * =============================================================================
+ * ==
+ */

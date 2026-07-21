@@ -27,6 +27,7 @@ that doesn't make sense.
 ===============================================================================
 */
 package solid;
+
 public class LSP_Before {
 
     public static void main(String[] args) {
@@ -52,17 +53,20 @@ public class LSP_Before {
 }
 
 /*
-===============================================================================
-                                BIRD
-===============================================================================
-
-Every bird is expected to fly.
-
-This assumption is WRONG because
-not every bird can actually fly.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * BIRD
+ * =============================================================================
+ * ==
+ * 
+ * Every bird is expected to fly.
+ * 
+ * This assumption is WRONG because
+ * not every bird can actually fly.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class OldBird {
 
@@ -75,16 +79,19 @@ class OldBird {
 }
 
 /*
-===============================================================================
-                              SPARROW
-===============================================================================
-
-A Sparrow can fly.
-
-No problem here.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * SPARROW
+ * =============================================================================
+ * ==
+ * 
+ * A Sparrow can fly.
+ * 
+ * No problem here.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class OldSparrow extends OldBird {
 
@@ -98,30 +105,33 @@ class OldSparrow extends OldBird {
 }
 
 /*
-===============================================================================
-                              PENGUIN
-===============================================================================
-
-Penguins cannot fly.
-
-But because Penguin extends Bird,
-it MUST implement fly().
-
-Some developers do this:
-
-- Throw Exception
-- Print "Can't fly"
-- Leave method empty
-
-All are bad designs.
-
-The child class is no longer behaving
-like its parent.
-
-This violates LSP.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * PENGUIN
+ * =============================================================================
+ * ==
+ * 
+ * Penguins cannot fly.
+ * 
+ * But because Penguin extends Bird,
+ * it MUST implement fly().
+ * 
+ * Some developers do this:
+ * 
+ * - Throw Exception
+ * - Print "Can't fly"
+ * - Leave method empty
+ * 
+ * All are bad designs.
+ * 
+ * The child class is no longer behaving
+ * like its parent.
+ * 
+ * This violates LSP.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class OldPenguin extends OldBird {
 
@@ -129,48 +139,51 @@ class OldPenguin extends OldBird {
     public void fly() {
 
         throw new UnsupportedOperationException(
-                "Penguins cannot fly."
-        );
+                "Penguins cannot fly.");
 
     }
 
 }
 
 /*
-===============================================================================
-                               WHY BAD?
-===============================================================================
-
-Our method expects:
-
-Any Bird can fly.
-
-But when Penguin is passed,
-the application crashes.
-
-Parent says:
-
-Bird -> fly()
-
-Child says:
-
-"I can't."
-
-That breaks substitution.
-
-===============================================================================
-
-Interview Question
-
-Q:
-Why does Penguin violate LSP?
-
-Answer:
-
-Because Penguin cannot replace Bird safely.
-
-Any code expecting a Bird that can fly
-will fail when Penguin is used.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * WHY BAD?
+ * =============================================================================
+ * ==
+ * 
+ * Our method expects:
+ * 
+ * Any Bird can fly.
+ * 
+ * But when Penguin is passed,
+ * the application crashes.
+ * 
+ * Parent says:
+ * 
+ * Bird -> fly()
+ * 
+ * Child says:
+ * 
+ * "I can't."
+ * 
+ * That breaks substitution.
+ * 
+ * =============================================================================
+ * ==
+ * 
+ * Interview Question
+ * 
+ * Q:
+ * Why does Penguin violate LSP?
+ * 
+ * Answer:
+ * 
+ * Because Penguin cannot replace Bird safely.
+ * 
+ * Any code expecting a Bird that can fly
+ * will fail when Penguin is used.
+ * 
+ * =============================================================================
+ * ==
+ */

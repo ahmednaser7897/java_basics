@@ -31,20 +31,20 @@ Benefits
 ===============================================================================
 */
 package solid;
+
 public class SRP_After {
 
     public static void main(String[] args) {
 
         // Create a user object
-        User user = new User(
+        OldUser user = new OldUser(
                 "Ahmed",
-                "ahmed@gmail.com"
-        );
+                "ahmed@gmail.com");
 
         /*
-        Instead of asking User to do everything,
-        each specialized class performs its own job.
-        */
+         * Instead of asking User to do everything,
+         * each specialized class performs its own job.
+         */
 
         UserRepository repository = new UserRepository();
         EmailService emailService = new EmailService();
@@ -62,26 +62,29 @@ public class SRP_After {
 }
 
 /*
-===============================================================================
-                                USER
-===============================================================================
-
-Responsibility
---------------
-Store user information ONLY.
-
-Notice:
-
-No database.
-No printing.
-No email.
-
-This class now has only ONE reason to change:
-
-"If user information changes."
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * USER
+ * =============================================================================
+ * ==
+ * 
+ * Responsibility
+ * --------------
+ * Store user information ONLY.
+ * 
+ * Notice:
+ * 
+ * No database.
+ * No printing.
+ * No email.
+ * 
+ * This class now has only ONE reason to change:
+ * 
+ * "If user information changes."
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class User {
 
@@ -105,31 +108,34 @@ class User {
 }
 
 /*
-===============================================================================
-                            USER REPOSITORY
-===============================================================================
-
-Responsibility
---------------
-Database operations ONLY.
-
-If tomorrow:
-
-- MySQL changes
-- PostgreSQL changes
-- MongoDB changes
-- API replaces Database
-
-ONLY this class changes.
-
-User class remains untouched.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * USER REPOSITORY
+ * =============================================================================
+ * ==
+ * 
+ * Responsibility
+ * --------------
+ * Database operations ONLY.
+ * 
+ * If tomorrow:
+ * 
+ * - MySQL changes
+ * - PostgreSQL changes
+ * - MongoDB changes
+ * - API replaces Database
+ * 
+ * ONLY this class changes.
+ * 
+ * User class remains untouched.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class UserRepository {
 
-    public void save(User user) {
+    public void save(OldUser user) {
 
         System.out.println("\n========== DATABASE ==========");
 
@@ -144,29 +150,32 @@ class UserRepository {
 }
 
 /*
-===============================================================================
-                            EMAIL SERVICE
-===============================================================================
-
-Responsibility
---------------
-Sending emails ONLY.
-
-If tomorrow:
-
-- Gmail API changes
-- SMTP changes
-- Outlook is used
-- SMS replaces Email
-
-Only this class changes.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * EMAIL SERVICE
+ * =============================================================================
+ * ==
+ * 
+ * Responsibility
+ * --------------
+ * Sending emails ONLY.
+ * 
+ * If tomorrow:
+ * 
+ * - Gmail API changes
+ * - SMTP changes
+ * - Outlook is used
+ * - SMS replaces Email
+ * 
+ * Only this class changes.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class EmailService {
 
-    public void sendWelcomeEmail(User user) {
+    public void sendWelcomeEmail(OldUser user) {
 
         System.out.println("\n========== EMAIL ==========");
 
@@ -183,28 +192,31 @@ class EmailService {
 }
 
 /*
-===============================================================================
-                            USER PRINTER
-===============================================================================
-
-Responsibility
---------------
-Display user information ONLY.
-
-If tomorrow:
-
-Console output changes
-PDF is required
-HTML report is required
-
-Only this class changes.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * USER PRINTER
+ * =============================================================================
+ * ==
+ * 
+ * Responsibility
+ * --------------
+ * Display user information ONLY.
+ * 
+ * If tomorrow:
+ * 
+ * Console output changes
+ * PDF is required
+ * HTML report is required
+ * 
+ * Only this class changes.
+ * 
+ * =============================================================================
+ * ==
+ */
 
 class UserPrinter {
 
-    public void print(User user) {
+    public void print(OldUser user) {
 
         System.out.println("\n========== USER ==========");
 
@@ -217,52 +229,57 @@ class UserPrinter {
 }
 
 /*
-===============================================================================
-                                SUMMARY
-===============================================================================
-
-Before SRP
-
-User Class
------------
-❌ Store Data
-❌ Save Data
-❌ Send Email
-❌ Print Data
-
-Too many responsibilities.
-
--------------------------------------------------------------------------------
-
-After SRP
-
-User
-✔ Store data
-
-UserRepository
-✔ Save data
-
-EmailService
-✔ Send email
-
-UserPrinter
-✔ Print data
-
-Each class has ONE responsibility.
-
--------------------------------------------------------------------------------
-
-Interview Question
-
-Q: Why is this design better?
-
-Answer:
-
-Because every class has only one responsibility.
-A change in the database, email, or printing logic
-will not affect the User class.
-
-This follows the Single Responsibility Principle.
-
-===============================================================================
-*/
+ * =============================================================================
+ * ==
+ * SUMMARY
+ * =============================================================================
+ * ==
+ * 
+ * Before SRP
+ * 
+ * User Class
+ * -----------
+ * ❌ Store Data
+ * ❌ Save Data
+ * ❌ Send Email
+ * ❌ Print Data
+ * 
+ * Too many responsibilities.
+ * 
+ * -----------------------------------------------------------------------------
+ * --
+ * 
+ * After SRP
+ * 
+ * User
+ * ✔ Store data
+ * 
+ * UserRepository
+ * ✔ Save data
+ * 
+ * EmailService
+ * ✔ Send email
+ * 
+ * UserPrinter
+ * ✔ Print data
+ * 
+ * Each class has ONE responsibility.
+ * 
+ * -----------------------------------------------------------------------------
+ * --
+ * 
+ * Interview Question
+ * 
+ * Q: Why is this design better?
+ * 
+ * Answer:
+ * 
+ * Because every class has only one responsibility.
+ * A change in the database, email, or printing logic
+ * will not affect the User class.
+ * 
+ * This follows the Single Responsibility Principle.
+ * 
+ * =============================================================================
+ * ==
+ */
